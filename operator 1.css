@@ -1,0 +1,13 @@
+/* Operator page layout */
+
+.operator-layout {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+}
+
+@media (max-width: 800px) {
+    .operator-layout {
+        grid-template-columns: 1fr;
+    }
+}
