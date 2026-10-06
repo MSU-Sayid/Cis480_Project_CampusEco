@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recipient Dashboard</title>
+    <link rel="stylesheet" href="css/base.css">
+    <link rel="stylesheet" href="css/recipient.css">
+</head>
+<body>
+
+<header>
+    <h1>Recipient Dashboard</h1>
+    <nav>
+        <a href="index.html">Home</a>
+        <a href="recipient.html">Recipient</a>
+        <a href="login.html">Logout</a>
+    </nav>
+</header>
+
+<main>
+
+    <section>
+        <h2>Package Tracking</h2>
+
+        <p><strong>Tracking Number:</strong> PKG12345</p>
+        <p><strong>Destination:</strong> Preska Hall</p>
+
+        <ol class="tracking-list">
+            <li>Received at Hub</li>
+            <li>Assigned to Driver</li>
+            <li>Loaded</li>
+            <li>En Route</li>
+            <li>Delivered</li>
+        </ol>
+    </section>
+
+    <section>
+        <h2>Notifications</h2>
+        <p>Your package PKG12345 is currently En Route.</p>
+    </section>
+
+    <section>
+        <h2>Delivery Preferences</h2>
+
+        <form>
+            <label for="location">Preferred Location</label>
+            <select id="location" name="location" required>
+                <option value="">Select location</option>
+                <option>Front Desk</option>
+                <option>Package Locker</option>
+                <option>Department Office</option>
+            </select>
+
+            <label>
+                <input type="checkbox" name="notify">
+                Send delivery notification
+            </label>
+
+            <label>
+                <input type="checkbox" name="signature">
+                Signature required
+            </label>
+
+            <button type="submit">Save Preferences</button>
+        </form>
+    </section>
+
+    <section>
+        <h2>Delivery Sign-Off</h2>
+
+        <form>
+            <label for="recipient-name">Recipient Name</label>
+            <input type="text" id="recipient-name" name="recipient-name" required>
+
+            <label>
+                <input type="checkbox" name="confirm" required>
+                I confirm that I received this package
+            </label>
+
+            <button type="submit">Sign Off</button>
+        </form>
+    </section>
+
+    <section>
+        <h2>Carbon Savings</h2>
+        <p>Estimated CO₂ saved from this delivery: <strong>0.6 kg</strong></p>
+    </section>
+
+</main>
+
+<footer>MNSU CampusEco © 2026</footer>
+
+</body>
+</html>
