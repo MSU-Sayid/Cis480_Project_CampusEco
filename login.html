@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login and Registration</title>
+    <link rel="stylesheet" href="css/base.css">
+    <link rel="stylesheet" href="css/login.css">
+</head>
+<body>
+
+<header>
+    <h1>MNSU CampusEco</h1>
+    <nav>
+        <a href="index.html">Home</a>
+        <a href="login.html">Login / Register</a>
+    </nav>
+</header>
+
+<main class="account-layout">
+
+    <section>
+        <h2>Login</h2>
+
+        <form>
+            <label for="login-id">MNSU ID</label>
+            <input type="text" id="login-id" name="login-id" required>
+
+            <label for="login-password">Password</label>
+            <input type="password" id="login-password" name="login-password" minlength="8" required>
+
+            <label for="login-role">Role</label>
+            <select id="login-role" name="login-role" required>
+                <option value="">Select role</option>
+                <option>Operator</option>
+                <option>Driver</option>
+                <option>Student / Faculty / Staff</option>
+            </select>
+
+            <button type="submit">Login</button>
+        </form>
+    </section>
+
+    <section>
+        <h2>Create Account</h2>
+
+        <form>
+            <label for="name">Full Name</label>
+            <input type="text" id="name" name="name" required>
+
+            <label for="register-email">MNSU Email</label>
+            <input type="email" id="register-email" name="register-email" required>
+
+            <label for="register-id">MNSU ID</label>
+            <input type="text" id="register-id" name="register-id" pattern="[A-Za-z0-9]{6,20}" required>
+
+            <label for="register-password">Password</label>
+            <input type="password" id="register-password" name="register-password" minlength="8" required>
+
+            <label for="register-role">Role</label>
+            <select id="register-role" name="register-role" required>
+                <option value="">Select role</option>
+                <option>Operator</option>
+                <option>Driver</option>
+                <option>Student / Faculty / Staff</option>
+            </select>
+
+            <button type="submit">Register</button>
+        </form>
+    </section>
+
+</main>
+
+<footer>MNSU CampusEco © 2026</footer>
+
+</body>
+</html>
