@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Driver Portal | MNSU CampusEco</title>
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/driver.css">
+</head>
+<body>
+
+  <header>
+    <h1>MNSU CampusEco</h1>
+    <p>Eco-Transit Crew: Driver Portal</p>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="operator.html">Operator</a>
+      <a href="driver.html">Driver</a>
+      <a href="recipient.html">Recipient</a>
+    </nav>
+  </header>
+
+  <main>
+
+    <!-- Summary cards -->
+    <section class="summary">
+      <div class="card">
+        <h3>Deliveries in queue</h3>
+        <p class="big-number">5</p>
+      </div>
+      <div class="card">
+        <h3>Delivered today</h3>
+        <p class="big-number success">12</p>
+      </div>
+      <div class="card">
+        <h3>Urgent packages</h3>
+        <p class="big-number danger">2</p>
+      </div>
+      <div class="card">
+        <h3>Cart battery</h3>
+        <p class="big-number warning">64%</p>
+      </div>
+    </section>
+
+    <!-- Route queue table -->
+    <section class="card">
+      <h2>Route Queue</h2>
+      <p>Select the deliveries you want to claim, then press Claim Selected.</p>
+
+      <form>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>Claim</th>
+                <th>Tracking No.</th>
+                <th>Destination</th>
+                <th>Priority</th>
+                <th>Weight (lb)</th>
+                <th>Status</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><input type="checkbox" name="claim" value="MNSU-100231" aria-label="Claim MNSU-100231"></td>
+                <td>MNSU-100231</td>
+                <td>Stadium Heights Residence Hall</td>
+                <td class="danger">Urgent</td>
+                <td>4.5</td>
+                <td class="warning">At Hub</td>
+              </tr>
+              <tr>
+                <td><input type="checkbox" name="claim" value="MNSU-100232" aria-label="Claim MNSU-100232"></td>
+                <td>MNSU-100232</td>
+                <td>Armstrong Hall, Room 102</td>
+                <td>Normal</td>
+                <td>12.0</td>
+                <td class="warning">At Hub</td>
+              </tr>
+              <tr>
+                <td><input type="checkbox" name="claim" value="MNSU-100233" aria-label="Claim MNSU-100233"></td>
+                <td>MNSU-100233</td>
+                <td>Centennial Student Union</td>
+                <td>Normal</td>
+                <td>2.3</td>
+                <td>Loaded</td>
+              </tr>
+              <tr>
+                <td><input type="checkbox" name="claim" value="MNSU-100234" aria-label="Claim MNSU-100234"></td>
+                <td>MNSU-100234</td>
+                <td>Memorial Library</td>
+                <td class="danger">Urgent</td>
+                <td>8.7</td>
+                <td>En Route</td>
+              </tr>
+              <tr>
+                <td><input type="checkbox" name="claim" value="MNSU-100235" aria-label="Claim MNSU-100235"></td>
+                <td>MNSU-100235</td>
+                <td>Morris Hall</td>
+                <td>Normal</td>
+                <td>6.1</td>
+                <td class="success">Delivered</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <button type="submit" class="form-button">Claim Selected</button>
+      </form>
+    </section>
+
+    <!-- Two forms side by side on desktop -->
+    <section class="form-row">
+
+      <!-- Milestone update -->
+      <div class="card">
+        <h2>Update Transit Milestone</h2>
+        <form>
+          <label for="tracking">Tracking number *</label>
+          <input type="text" id="tracking" name="tracking"
+                 placeholder="MNSU-123456"
+                 pattern="MNSU-[0-9]{6}"
+                 title="Format: MNSU- followed by 6 digits (example: MNSU-123456)"
+                 required>
+
+          <fieldset>
+            <legend>New status *</legend>
+            <label class="inline"><input type="radio" name="milestone" value="Loaded" required> Loaded</label>
+            <label class="inline"><input type="radio" name="milestone" value="En Route"> En Route</label>
+            <label class="inline"><input type="radio" name="milestone" value="Delivered"> Delivered</label>
+          </fieldset>
+
+          <label for="notes">Notes (optional)</label>
+          <textarea id="notes" name="notes" rows="3" maxlength="200"
+                    placeholder="Example: Left at front desk"></textarea>
+
+          <button type="submit">Update Status</button>
+        </form>
+      </div>
+
+      <!-- Battery report -->
+      <div class="card">
+        <h2>Report Cart Battery</h2>
+        <form>
+          <label for="cart">Electric cart *</label>
+          <select id="cart" name="cart" required>
+            <option value="">Select a cart</option>
+            <option value="cart-01">Cart 01</option>
+            <option value="cart-02">Cart 02</option>
+            <option value="cart-03">Cart 03</option>
+          </select>
+
+          <label for="battery">Battery level (%) *</label>
+          <input type="number" id="battery" name="battery"
+                 min="0" max="100" step="1" placeholder="0 to 100" required>
+
+          <label for="driver-email">Your MNSU email *</label>
+          <input type="email" id="driver-email" name="driver-email"
+                 placeholder="name@mnsu.edu" required>
+
+          <label class="inline">
+            <input type="checkbox" name="needs-charge" value="yes"> This cart needs charging
+          </label>
+
+          <button type="submit">Send Battery Report</button>
+        </form>
+      </div>
+
+    </section>
+
+  </main>
+
+  <footer>
+    <p>&copy; 2026 MNSU CampusEco | CIS 483/583</p>
+  </footer>
+
+</body>
+</html> 

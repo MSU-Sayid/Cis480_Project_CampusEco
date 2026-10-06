@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Operator Dashboard</title>
+    <link rel="stylesheet" href="css/base.css">
+    <link rel="stylesheet" href="css/operator.css">
+</head>
+<body>
+
+<header>
+    <h1>Operator Dashboard</h1>
+    <nav>
+        <a href="index.html">Home</a>
+        <a href="operator.html">Operator</a>
+        <a href="login.html">Logout</a>
+    </nav>
+</header>
+
+<main>
+    <div class="operator-layout">
+
+        <section>
+            <h2>Package Check-In</h2>
+
+            <form>
+                <label for="tracking">Tracking Number</label>
+                <input type="text" id="tracking" name="tracking"
+                       pattern="[A-Za-z0-9]{8,20}" required>
+
+                <label for="email">Recipient Email</label>
+                <input type="email" id="email" name="email" required>
+
+                <label for="weight">Weight (lbs)</label>
+                <input type="number" id="weight" name="weight"
+                       min="0.1" max="100" step="0.1" required>
+
+                <label for="destination">Destination</label>
+                <select id="destination" name="destination" required>
+                    <option value="">Select destination</option>
+                    <option>Preska Hall</option>
+                    <option>CSU</option>
+                    <option>Memorial Library</option>
+                    <option>Wissink Hall</option>
+                </select>
+
+                <label>Package Size</label>
+                <input type="radio" name="size" value="small" required> Small
+                <input type="radio" name="size" value="medium"> Medium
+                <input type="radio" name="size" value="large"> Large
+
+                <label>Priority</label>
+                <input type="radio" name="priority" value="normal" required> Normal
+                <input type="radio" name="priority" value="urgent"> Urgent
+
+                <label>Special Handling</label>
+                <input type="checkbox" name="fragile"> Fragile
+                <input type="checkbox" name="signature"> Signature Required
+
+                <br>
+                <button type="submit">Check In Package</button>
+            </form>
+        </section>
+
+        <section>
+            <h2>Package Tracking Log</h2>
+
+            <table>
+                <caption>Current Packages</caption>
+                <thead>
+                    <tr>
+                        <th scope="col">Tracking</th>
+                        <th scope="col">Destination</th>
+                        <th scope="col">Priority</th>
+                        <th scope="col">Status</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>PKG12345</td>
+                        <td>Preska Hall</td>
+                        <td>Normal</td>
+                        <td>At Hub</td>
+                    </tr>
+                    <tr>
+                        <td>PKG67890</td>
+                        <td>CSU</td>
+                        <td>Urgent</td>
+                        <td>Assigned</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+    </div>
+</main>
+
+<footer>MNSU CampusEco © 2026</footer>
+
+</body>
+</html>

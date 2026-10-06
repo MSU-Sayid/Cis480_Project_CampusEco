@@ -1,0 +1,43 @@
+/* Operator page layout */
+
+.operator-layout {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+}
+
+@media (max-width: 800px) {
+    .operator-layout {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* Each panel looks like a card */
+.operator-layout section {
+    background: #fff;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+}
+
+/* Space out the radio and checkbox groups */
+.operator-layout form input[type="radio"],
+.operator-layout form input[type="checkbox"] {
+    margin: 0 4px 12px 0;
+}
+
+/* Full-width check-in button */
+.operator-layout form button {
+    width: 100%;
+    margin-top: 10px;
+}
+
+/* Tracking log: caption and row highlight */
+.operator-layout caption {
+    text-align: left;
+    font-weight: bold;
+    padding-bottom: 8px;
+}
+.operator-layout tbody tr:nth-child(even) { background: #f7f3f9; }
+.operator-layout tbody tr:hover { background: #efe6f3; }
