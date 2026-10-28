@@ -6,8 +6,48 @@
     gap: 20px;
 }
 
+.account-layout section {
+    margin-bottom: 0;
+}
+
+.form-intro {
+    margin-top: -5px;
+    color: #555;
+}
+
+.password-row {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 8px;
+    align-items: center;
+}
+
+.password-row .secondary-button {
+    margin-top: 0;
+    background-color: #666;
+    min-width: 65px;
+}
+
+.form-message {
+    min-height: 20px;
+    margin: 12px 0 0;
+    font-weight: bold;
+}
+
+.form-message.success {
+    color: #1f6f43;
+}
+
+.form-message.error {
+    color: #a12622;
+}
+
 @media (max-width: 700px) {
     .account-layout {
         grid-template-columns: 1fr;
+    }
+
+    .account-layout section {
+        margin-bottom: 20px;
     }
 }
