@@ -20,76 +20,101 @@
 
 <main>
 
-    <section>
+    <!-- Feedback message (same pattern as the driver portal) -->
+    <div id="recipient-message" class="msg" role="status" aria-live="polite" hidden></div>
+
+    <section id="tracking-section">
         <h2>Package Tracking</h2>
 
-        <p><strong>Tracking Number:</strong> PKG12345</p>
-        <p><strong>Destination:</strong> Preska Hall</p>
-
-        <ol class="tracking-list">
-            <li>Received at Hub</li>
-            <li>Assigned to Driver</li>
-            <li>Loaded</li>
-            <li>En Route</li>
-            <li>Delivered</li>
-        </ol>
-    </section>
-
-    <section>
-        <h2>Notifications</h2>
-        <p>Your package PKG12345 is currently En Route.</p>
-    </section>
-
-    <section>
-        <h2>Delivery Preferences</h2>
-
-        <form>
-            <label for="location">Preferred Location</label>
-            <select id="location" name="location" required>
-                <option value="">Select location</option>
-                <option>Front Desk</option>
-                <option>Package Locker</option>
-                <option>Department Office</option>
-            </select>
-
-            <label>
-                <input type="checkbox" name="notify">
-                Send delivery notification
-            </label>
-
-            <label>
-                <input type="checkbox" name="signature">
-                Signature required
-            </label>
-
-            <button type="submit">Save Preferences</button>
+        <form id="email-form" class="inline-form">
+            <label for="recipient-email">Your email</label>
+            <input type="email" id="recipient-email" name="recipient-email" placeholder="student@mnsu.edu" required>
+            <button type="submit">Show my packages</button>
         </form>
+
+        <label for="package-select">Package</label>
+        <select id="package-select" name="package-select"></select>
+
+        <div id="tracking-details">
+            <p><strong>Tracking Number:</strong> <span id="tracking-number">—</span></p>
+            <p><strong>Destination:</strong> <span id="tracking-destination">—</span></p>
+            <p><strong>Status:</strong> <span id="tracking-status" class="badge">—</span></p>
+
+            <div class="progress" role="progressbar" aria-label="Delivery progress"
+                 aria-valuemin="0" aria-valuemax="100" aria-valuenow="0">
+                <span id="progress-fill"></span>
+            </div>
+
+            <ol class="tracking-list" id="tracking-list"></ol>
+        </div>
+        <p id="no-packages" class="empty" hidden>No packages found for this email yet.</p>
     </section>
 
-    <section>
-        <h2>Delivery Sign-Off</h2>
+    <section id="notifications-section">
+        <h2>Notifications <span id="notif-count" class="count" hidden>0</span></h2>
+        <ul id="notification-list" class="notification-list"></ul>
+    </section>
 
-        <form>
+    <section id="preferences-section">
+        <h2>Delivery Preferences</h2>
+        <button type="button" id="toggle-prefs" aria-expanded="true" aria-controls="prefs-panel">Hide preferences</button>
+
+        <div id="prefs-panel">
+            <form id="prefs-form">
+                <label for="location">Preferred Location</label>
+                <select id="location" name="location" required>
+                    <option value="">Select location</option>
+                    <option>Front Desk</option>
+                    <option>Package Locker</option>
+                    <option>Department Office</option>
+                </select>
+
+                <label>
+                    <input type="checkbox" id="notify" name="notify">
+                    Send delivery notification
+                </label>
+
+                <label>
+                    <input type="checkbox" id="signature" name="signature">
+                    Signature required
+                </label>
+
+                <button type="submit">Save Preferences</button>
+            </form>
+        </div>
+    </section>
+
+    <section id="signoff-section">
+        <h2>Delivery Sign-Off</h2>
+        <p id="signoff-hint" class="hint"></p>
+
+        <form id="signoff-form">
             <label for="recipient-name">Recipient Name</label>
-            <input type="text" id="recipient-name" name="recipient-name" required>
+            <input type="text" id="recipient-name" name="recipient-name" minlength="2" required>
 
             <label>
-                <input type="checkbox" name="confirm" required>
+                <input type="checkbox" id="confirm" name="confirm" required>
                 I confirm that I received this package
             </label>
 
-            <button type="submit">Sign Off</button>
+            <button type="submit" id="signoff-btn">Sign Off</button>
         </form>
     </section>
 
-    <section>
+    <section id="carbon-section">
         <h2>Carbon Savings</h2>
-        <p>Estimated CO₂ saved from this delivery: <strong>0.6 kg</strong></p>
+        <p>CO₂ saved by this delivery: <strong id="carbon-this">0.0 kg</strong></p>
+        <p>Total saved on your delivered packages: <strong id="carbon-total">0.0 kg</strong></p>
+        <p class="hint">Estimate: a shared electric-cart trip replaces a separate courier drive.</p>
     </section>
 
 </main>
 
 <footer>MNSU CampusEco © 2026</footer>
+
+<!-- jQuery (compressed) — remove this line if driver.html already loads it from a local file and use that path instead -->
+<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+<script src="js/recipient.js"></script>
 
 </body>
 </html>
