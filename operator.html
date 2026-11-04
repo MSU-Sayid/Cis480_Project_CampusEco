@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -11,63 +12,149 @@
 
 <header>
     <h1>Operator Dashboard</h1>
-    <nav>
+    <nav aria-label="Main navigation">
         <a href="index.html">Home</a>
-        <a href="operator.html">Operator</a>
+        <a href="operator.html" aria-current="page">Operator</a>
         <a href="login.html">Logout</a>
     </nav>
 </header>
 
 <main>
+
+    <!-- Success and error messages -->
+    <div id="operator-message"
+         class="msg"
+         role="status"
+         aria-live="polite"
+         hidden>
+    </div>
+
     <div class="operator-layout">
 
+        <!-- Package Check-In -->
         <section>
             <h2>Package Check-In</h2>
 
-            <form>
+            <form id="checkin-form">
+
                 <label for="tracking">Tracking Number</label>
-                <input type="text" id="tracking" name="tracking"
-                       pattern="[A-Za-z0-9]{8,20}" required>
+                <input
+                    type="text"
+                    id="tracking"
+                    name="tracking"
+                    pattern="MNSU-[0-9]{6}"
+                    placeholder="MNSU-123456"
+                    title="Use MNSU- followed by 6 digits"
+                    required
+                >
 
                 <label for="email">Recipient Email</label>
-                <input type="email" id="email" name="email" required>
+                <input
+                    type="email"
+                    id="email"
+                    name="email"
+                    placeholder="student@mnsu.edu"
+                    required
+                >
 
                 <label for="weight">Weight (lbs)</label>
-                <input type="number" id="weight" name="weight"
-                       min="0.1" max="100" step="0.1" required>
+                <input
+                    type="number"
+                    id="weight"
+                    name="weight"
+                    min="0.1"
+                    max="100"
+                    step="0.1"
+                    required
+                >
 
                 <label for="destination">Destination</label>
                 <select id="destination" name="destination" required>
                     <option value="">Select destination</option>
-                    <option>Preska Hall</option>
-                    <option>CSU</option>
-                    <option>Memorial Library</option>
-                    <option>Wissink Hall</option>
+                    <option value="Preska Hall">Preska Hall</option>
+                    <option value="CSU">CSU</option>
+                    <option value="Memorial Library">Memorial Library</option>
+                    <option value="Wissink Hall">Wissink Hall</option>
                 </select>
 
-                <label>Package Size</label>
-                <input type="radio" name="size" value="small" required> Small
-                <input type="radio" name="size" value="medium"> Medium
-                <input type="radio" name="size" value="large"> Large
+                <!-- Package Size -->
+                <fieldset>
+                    <legend>Package Size</legend>
 
-                <label>Priority</label>
-                <input type="radio" name="priority" value="normal" required> Normal
-                <input type="radio" name="priority" value="urgent"> Urgent
+                    <label>
+                        <input type="radio"
+                               name="size"
+                               value="small"
+                               required>
+                        Small
+                    </label>
 
-                <label>Special Handling</label>
-                <input type="checkbox" name="fragile"> Fragile
-                <input type="checkbox" name="signature"> Signature Required
+                    <label>
+                        <input type="radio"
+                               name="size"
+                               value="medium">
+                        Medium
+                    </label>
 
-                <br>
-                <button type="submit">Check In Package</button>
+                    <label>
+                        <input type="radio"
+                               name="size"
+                               value="large">
+                        Large
+                    </label>
+                </fieldset>
+
+                <!-- Priority -->
+                <fieldset>
+                    <legend>Priority</legend>
+
+                    <label>
+                        <input type="radio"
+                               name="priority"
+                               value="normal"
+                               required>
+                        Normal
+                    </label>
+
+                    <label>
+                        <input type="radio"
+                               name="priority"
+                               value="urgent">
+                        Urgent
+                    </label>
+                </fieldset>
+
+                <!-- Special Handling -->
+                <fieldset>
+                    <legend>Special Handling</legend>
+
+                    <label>
+                        <input type="checkbox"
+                               name="fragile">
+                        Fragile
+                    </label>
+
+                    <label>
+                        <input type="checkbox"
+                               name="signature">
+                        Signature Required
+                    </label>
+                </fieldset>
+
+                <button type="submit">
+                    Check In Package
+                </button>
+
             </form>
         </section>
 
+        <!-- Package Tracking Log -->
         <section>
             <h2>Package Tracking Log</h2>
 
             <table>
                 <caption>Current Packages</caption>
+
                 <thead>
                     <tr>
                         <th scope="col">Tracking</th>
@@ -76,27 +163,26 @@
                         <th scope="col">Status</th>
                     </tr>
                 </thead>
-                <tbody>
-                    <tr>
-                        <td>PKG12345</td>
-                        <td>Preska Hall</td>
-                        <td>Normal</td>
-                        <td>At Hub</td>
-                    </tr>
-                    <tr>
-                        <td>PKG67890</td>
-                        <td>CSU</td>
-                        <td>Urgent</td>
-                        <td>Assigned</td>
-                    </tr>
+
+                <!-- JavaScript adds package rows here -->
+                <tbody id="operator-packages">
                 </tbody>
+
             </table>
         </section>
 
     </div>
 </main>
 
-<footer>MNSU CampusEco © 2026</footer>
+<footer>
+    MNSU CampusEco © 2026
+</footer>
+
+<!-- jQuery library -->
+<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+
+<!-- Operator JavaScript -->
+<script src="js/operator.js"></script>
 
 </body>
 </html>
