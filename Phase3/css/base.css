@@ -1,0 +1,183 @@
+/* Shared styles for all pages */
+
+:root {
+    --mnsu-purple: #5b1f69;
+    --mnsu-gold: #d6ad45;
+    --page-background: #f4f4f4;
+    --text-color: #333;
+    --border-color: #ddd;
+    --success-color: #1f6f43;
+    --error-color: #a12622;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-color: var(--page-background);
+    color: var(--text-color);
+}
+
+header {
+    background-color: var(--mnsu-purple);
+    color: white;
+    padding: 20px;
+    border-bottom: 4px solid var(--mnsu-gold);
+}
+
+header h1 {
+    margin: 0;
+}
+
+nav {
+    margin-top: 10px;
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+    margin-right: 15px;
+}
+
+nav a:hover,
+nav a:focus,
+nav a[aria-current="page"] {
+    text-decoration: underline;
+}
+
+main {
+    width: 90%;
+    max-width: 1000px;
+    margin: 30px auto;
+}
+
+section {
+    background-color: white;
+    padding: 20px;
+    margin-bottom: 20px;
+    border: 1px solid var(--border-color);
+}
+
+h2 {
+    color: var(--mnsu-purple);
+}
+
+label {
+    display: block;
+    margin-top: 12px;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+input,
+select {
+    width: 100%;
+    padding: 9px;
+    border: 1px solid #bbb;
+    border-radius: 4px;
+    font: inherit;
+}
+
+input:focus,
+select:focus {
+    outline: 2px solid var(--mnsu-gold);
+    outline-offset: 1px;
+}
+
+input[type="radio"],
+input[type="checkbox"] {
+    width: auto;
+}
+
+button,
+.primary-link {
+    display: inline-block;
+    margin-top: 15px;
+    background-color: var(--mnsu-purple);
+    color: white;
+    border: none;
+    padding: 10px 16px;
+    border-radius: 4px;
+    text-decoration: none;
+    font: inherit;
+    cursor: pointer;
+}
+
+button:hover,
+button:focus,
+.primary-link:hover,
+.primary-link:focus {
+    opacity: 0.9;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+th,
+td {
+    border: 1px solid var(--border-color);
+    padding: 10px;
+    text-align: left;
+}
+
+th {
+    background-color: var(--mnsu-purple);
+    color: white;
+}
+
+footer {
+    background-color: #333;
+    color: white;
+    text-align: center;
+    padding: 15px;
+    margin-top: 30px;
+}
+
+@media (max-width: 700px) {
+    header {
+        padding: 16px;
+    }
+
+    nav a {
+        display: block;
+        margin: 8px 0;
+        padding: 4px 0;
+    }
+
+    main {
+        width: 94%;
+        margin: 20px auto;
+    }
+
+    section {
+        padding: 16px;
+    }
+}
+
+/* Phase 3 additive UI enhancements; original Phase 1/2 theme retained. */
+.msg:not([hidden]), .form-message:not(:empty) {
+    display: block;
+    padding: 10px 12px;
+    margin: 10px 0;
+    border-radius: 4px;
+}
+.msg-success, .form-message.success { color: #135a34; background: #e6f3eb; }
+.msg-error, .form-message.error { color: #992019; background: #fceae8; }
+.operator-layout { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 20px; }
+.queue-table { width: 100%; }
+.queue-toolbar { display: flex; align-items: center; gap: 15px; flex-wrap: wrap; }
+.battery-grid { display: flex; gap: 14px; flex-wrap: wrap; }
+.battery-card { padding: 12px 16px; background: #f7f1fb; border: 1px solid #d7c4de; border-radius: 6px; }
+.progress { width:100%; height: 14px; background: #e8e6eb; border-radius: 10px; overflow: hidden; }
+#progress-fill { display: block; width: 0; height: 100%; background: #5b1f69; transition: width .2s ease; }
+.table-scroll { overflow-x: auto; }
+@media (max-width: 800px) {
+  .operator-layout { grid-template-columns: 1fr; }
+  table { display: block; overflow-x: auto; }
+  .queue-toolbar { align-items: flex-start; }
+}

@@ -1,0 +1,36 @@
+/* Home page layout */
+
+.hero {
+    text-align: center;
+    padding: 32px 20px;
+}
+
+.hero p {
+    max-width: 650px;
+    margin: 0 auto 10px;
+    line-height: 1.6;
+}
+
+.portal-list {
+    display: flex;
+    gap: 15px;
+}
+
+.portal-list section {
+    flex: 1;
+}
+
+.portal-list section a {
+    color: #5b1f69;
+    font-weight: bold;
+}
+
+@media (max-width: 700px) {
+    .portal-list {
+        display: block;
+    }
+
+    .hero {
+        padding: 24px 16px;
+    }
+}
