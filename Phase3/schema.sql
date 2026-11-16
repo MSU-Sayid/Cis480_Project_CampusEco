@@ -1,0 +1,36 @@
+CREATE DATABASE IF NOT EXISTS campuseco CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
+USE campuseco;
+CREATE TABLE IF NOT EXISTS users (
+ id INT AUTO_INCREMENT PRIMARY KEY, full_name VARCHAR(100) NOT NULL, email VARCHAR(190) NOT NULL UNIQUE,
+ mnsu_id VARCHAR(20) NOT NULL UNIQUE, password_hash VARCHAR(255) NOT NULL,
+ role ENUM('operator','driver','recipient') NOT NULL, created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+CREATE TABLE IF NOT EXISTS packages (
+ id INT AUTO_INCREMENT PRIMARY KEY, tracking_number VARCHAR(11) NOT NULL UNIQUE,
+ recipient_email VARCHAR(190) NOT NULL, destination VARCHAR(100) NOT NULL,
+ weight DECIMAL(6,1) NOT NULL, size ENUM('small','medium','large') NOT NULL,
+ priority ENUM('normal','urgent') NOT NULL DEFAULT 'normal', fragile TINYINT(1) NOT NULL DEFAULT 0,
+ signature_required TINYINT(1) NOT NULL DEFAULT 0,
+ status ENUM('Received at Hub','Assigned to Driver','Loaded','En Route','Delivered') NOT NULL DEFAULT 'Received at Hub',
+ driver_id INT NULL, signed_by VARCHAR(100) NULL, signed_at DATETIME NULL,
+ created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP, updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+ FOREIGN KEY (driver_id) REFERENCES users(id)
+);
+CREATE TABLE IF NOT EXISTS vehicles (
+ id INT AUTO_INCREMENT PRIMARY KEY, name VARCHAR(80) NOT NULL UNIQUE, battery_level TINYINT UNSIGNED NOT NULL DEFAULT 100,
+ reported_by INT NULL, updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+ FOREIGN KEY (reported_by) REFERENCES users(id)
+);
+CREATE TABLE IF NOT EXISTS delivery_preferences (
+ user_id INT PRIMARY KEY, preferred_location VARCHAR(80) NOT NULL,
+ notify TINYINT(1) NOT NULL DEFAULT 1, signature_required TINYINT(1) NOT NULL DEFAULT 0,
+ FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE
+);
+CREATE TABLE IF NOT EXISTS transit_events (
+ id INT AUTO_INCREMENT PRIMARY KEY, package_id INT NOT NULL, user_id INT NOT NULL,
+ status VARCHAR(40) NOT NULL, created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+ FOREIGN KEY (package_id) REFERENCES packages(id) ON DELETE CASCADE,
+ FOREIGN KEY (user_id) REFERENCES users(id)
+);
+INSERT INTO vehicles (name, battery_level) VALUES ('Eco Cart 1',100),('Eco Cart 2',100)
+ON DUPLICATE KEY UPDATE name=VALUES(name);
