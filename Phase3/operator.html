@@ -1,0 +1,189 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Operator Dashboard</title>
+    <link rel="stylesheet" href="css/base.css">
+    <link rel="stylesheet" href="css/operator.css">
+</head>
+<body>
+
+<header>
+    <h1>Operator Dashboard</h1>
+    <nav aria-label="Main navigation">
+        <a href="index.html">Home</a>
+        <a href="operator.html" aria-current="page">Operator</a>
+        <a href="login.html" data-logout>Logout</a>
+    </nav>
+</header>
+
+<main>
+
+    <!-- Success and error messages -->
+    <div id="operator-message"
+         class="msg"
+         role="status"
+         aria-live="polite"
+         hidden>
+    </div>
+
+    <div class="operator-layout">
+
+        <!-- Package Check-In -->
+        <section>
+            <h2>Package Check-In</h2>
+
+            <form id="checkin-form">
+
+                <label for="tracking">Tracking Number</label>
+                <input
+                    type="text"
+                    id="tracking"
+                    name="tracking"
+                    pattern="MNSU-[0-9]{6}"
+                    placeholder="MNSU-123456"
+                    title="Use MNSU- followed by 6 digits"
+                    required
+                >
+
+                <label for="email">Recipient Email</label>
+                <input
+                    type="email"
+                    id="email"
+                    name="email"
+                    placeholder="student@mnsu.edu"
+                    required
+                >
+
+                <label for="weight">Weight (lbs)</label>
+                <input
+                    type="number"
+                    id="weight"
+                    name="weight"
+                    min="0.1"
+                    max="100"
+                    step="0.1"
+                    required
+                >
+
+                <label for="destination">Destination</label>
+                <select id="destination" name="destination" required>
+                    <option value="">Select destination</option>
+                    <option value="Preska Hall">Preska Hall</option>
+                    <option value="CSU">CSU</option>
+                    <option value="Memorial Library">Memorial Library</option>
+                    <option value="Wissink Hall">Wissink Hall</option>
+                </select>
+
+                <!-- Package Size -->
+                <fieldset>
+                    <legend>Package Size</legend>
+
+                    <label>
+                        <input type="radio"
+                               name="size"
+                               value="small"
+                               required>
+                        Small
+                    </label>
+
+                    <label>
+                        <input type="radio"
+                               name="size"
+                               value="medium">
+                        Medium
+                    </label>
+
+                    <label>
+                        <input type="radio"
+                               name="size"
+                               value="large">
+                        Large
+                    </label>
+                </fieldset>
+
+                <!-- Priority -->
+                <fieldset>
+                    <legend>Priority</legend>
+
+                    <label>
+                        <input type="radio"
+                               name="priority"
+                               value="normal"
+                               required>
+                        Normal
+                    </label>
+
+                    <label>
+                        <input type="radio"
+                               name="priority"
+                               value="urgent">
+                        Urgent
+                    </label>
+                </fieldset>
+
+                <!-- Special Handling -->
+                <fieldset>
+                    <legend>Special Handling</legend>
+
+                    <label>
+                        <input type="checkbox"
+                               name="fragile">
+                        Fragile
+                    </label>
+
+                    <label>
+                        <input type="checkbox"
+                               name="signature">
+                        Signature Required
+                    </label>
+                </fieldset>
+
+                <button type="submit">
+                    Check In Package
+                </button>
+
+            </form>
+        </section>
+
+        <!-- Package Tracking Log -->
+        <section>
+            <h2>Package Tracking Log</h2>
+
+            <table>
+                <caption>Current Packages</caption>
+
+                <thead>
+                    <tr>
+                        <th scope="col">Tracking</th>
+                        <th scope="col">Destination</th>
+                        <th scope="col">Priority</th>
+                        <th scope="col">Status</th>
+                    </tr>
+                </thead>
+
+                <!-- JavaScript adds package rows here -->
+                <tbody id="operator-packages">
+                </tbody>
+
+            </table>
+        </section>
+
+    </div>
+</main>
+
+<footer>
+    MNSU CampusEco © 2026
+</footer>
+
+<!-- jQuery library -->
+<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+
+<!-- Operator JavaScript -->
+<script src="js/api.js"></script>
+<script src="js/phase3/operator.js"></script>
+
+</body>
+</html>
